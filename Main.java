@@ -18,7 +18,7 @@ public class Main{
         
         // set up user details
         Customer user1 = createUser();
-        JOptionPane.showMessageDialog(null, "\n---------------------------------------------------------------\nOrder you food now");
+        JOptionPane.showMessageDialog(null, "Order you food now");
         
         JOptionPane.showMessageDialog(null, "---------------------------------------------------------------\nSelect restaurants\n1 - " + cafeteria1.getCafeteriaName() + "\n2 - " + cafeteria2.getCafeteriaName());
         int option = keyboard.nextInt();
@@ -58,16 +58,16 @@ public class Main{
             try 
             {
                 Scanner keyboard = new Scanner(System.in);
-                JOptionPane.showMessageDialog(null, "Please enter your details below \nCustomer Name: ");
-                name = keyboard.nextLine();
-                JOptionPane.showMessageDialog(null, "UserID: ");
-                userID = keyboard.nextInt();
-                JOptionPane.showMessageDialog(null, "ContactID: ");
-                contactID = keyboard.nextInt();
-                JOptionPane.showMessageDialog(null, "Hostel(Type only the first word): ");
-                hostel = keyboard.next();
-                JOptionPane.showMessageDialog(null, "Room number: ");
-                roomNo = keyboard.nextInt();
+                JOptionPane.showInputDialog(null, "Please enter your details below \nCustomer Name: ");
+                // name = keyboard.nextLine();
+                JOptionPane.showInputDialog(null, "UserID: ");
+                // userID = keyboard.nextInt();
+                JOptionPane.showInputDialog(null, "ContactID: ");
+                // contactID = keyboard.nextInt();
+                JOptionPane.showInputDialog(null, "Hostel(Type only the first word): ");
+                // hostel = keyboard.next();
+                JOptionPane.showInputDialog(null, "Room number: ");
+                // roomNo = keyboard.nextInt();
 
                 validInput = true;
                 // create customer
