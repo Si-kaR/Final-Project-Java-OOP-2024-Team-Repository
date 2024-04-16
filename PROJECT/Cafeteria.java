@@ -7,9 +7,10 @@ import java.util.List;
  */
 public class Cafeteria {
     private String cafeteriaName;
+
     private List<Order> orders; // List of orders in the cafeteria
-    private List<String> drinksMenu; // List of drinks available in the cafeteria
-    private List<String> mealsMenu; // List of meals available in the cafeteria
+    // private List<String> drinksMenu; // List of drinks available in the cafeteria
+    private List<FoodItem> mealsMenu; // List of meals available in the cafeteria
     private String location; // Location of the cafeteria ("onCampus" or "offCampus")
     private static List<Cafeteria> cafeteriaList = new ArrayList<>(); // List of all cafeterias
 
@@ -23,7 +24,7 @@ public class Cafeteria {
         this.cafeteriaName = cafeteriaName;
         this.location = location;
         this.orders = new ArrayList<>();
-        this.drinksMenu = new ArrayList<>();
+        // this.drinksMenu = new ArrayList<>();
         this.mealsMenu = new ArrayList<>();
         // Add this cafeteria to the cafeteria list
         cafeteriaList.add(this);
@@ -34,9 +35,8 @@ public class Cafeteria {
      *
      * @param meal the meal to be added to the meals menu
      */
-    public void addMeal(String meal) {
+    public void addMeal(FoodItem meal) {
         mealsMenu.add(meal);
-        System.out.println("Added meal: " + meal + " to the meals menu.");
     }
 
     /**
@@ -44,17 +44,19 @@ public class Cafeteria {
      *
      * @param drink the drink to be added to the drinks menu
      */
+
+     /** 
     public void addDrink(String drink) {
         drinksMenu.add(drink);
         System.out.println("Added drink: " + drink + " to the drinks menu.");
-    }
+    }*/
 
     /**
      * Removes a drink from the drinks menu.
      *
      * @param drink the drink to be removed from the drinks menu
      * @return true if the drink was removed; false otherwise
-     */
+     
     public boolean removeDrink(String drink) {
         boolean removed = drinksMenu.remove(drink);
         if (removed) {
@@ -64,35 +66,70 @@ public class Cafeteria {
         }
         return removed;
     }
-
+*/
     /**
      * Displays the meals menu.
      */
     public void displayMealsMenu() {
-        System.out.println("Meals Menu:");
-        for (String meal : mealsMenu) {
-            System.out.println("- " + meal);
+        int i = 1;
+        System.out.println(cafeteriaName + "'s Meals Menu:");
+        for (FoodItem meal : mealsMenu) {
+            System.out.println(i+ ": " + meal.getName() + " GHC " + meal.getPrice());
+            i++;
         }
     }
 
     /**
      * Displays the drinks menu.
-     */
+     
     public void displayDrinksMenu() {
         System.out.println("Drinks Menu:");
         for (String drink : drinksMenu) {
             System.out.println("- " + drink);
         }
     }
-
+*/
     /**
      * Displays the full menu (meals and drinks).
-     */
+     
     public void getMenu() {
         System.out.println("Full Menu:");
         displayMealsMenu();
         displayDrinksMenu();
+        // Since this is a get method it should RETURN
+        
     }
+*/
+    //  Use toString for displayMealsMenu
+
+
+    // Use toString for displayDrinksMenu
+
+
+// Prototype
+// Prototype
+// Prototype
+// Prototype
+// Prototype
+// Prototype
+// Prototype
+// Prototype
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Notifies the cafeteria with a message (e.g., order details).
@@ -145,26 +182,26 @@ public class Cafeteria {
      * Retrieves the list of drinks available in the cafeteria.
      *
      * @return the list of drinks available in the cafeteria
-     */
+    
     public List<String> getDrinksMenu() {
         return drinksMenu;
     }
-
+ */
     /**
      * Sets the list of drinks available in the cafeteria.
      *
      * @param drinksMenu the list of drinks to set
-     */
+    
     public void setDrinksMenu(List<String> drinksMenu) {
         this.drinksMenu = drinksMenu;
     }
-
+ */
     /**
      * Retrieves the list of meals available in the cafeteria.
      *
      * @return the list of meals available in the cafeteria
      */
-    public List<String> getMealsMenu() {
+    public List<FoodItem> getMealsMenu() {
         return mealsMenu;
     }
 
@@ -173,7 +210,7 @@ public class Cafeteria {
      *
      * @param mealsMenu the list of meals to set
      */
-    public void setMealsMenu(List<String> mealsMenu) {
+    public void setMealsMenu(List<FoodItem> mealsMenu) {
         this.mealsMenu = mealsMenu;
     }
 
