@@ -1,4 +1,5 @@
 //import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class Order {
     // private int orderId;
@@ -27,12 +28,25 @@ public class Order {
     
 
     public void displayOrderDetails(){
+        JOptionPane.showMessageDialog(null, "\nYou order details are listed below ");        
+        JOptionPane.showMessageDialog(null, "Hello there! Welcome to the Ashesi Ordering platform!");
+
         System.out.println("\nYou order details are listed below ");
-        System.out.println("Customer name:" + user.getName() + 
+        JOptionPane.showMessageDialog(null, "Customer name:" + user.getName() + 
                            "\nUserID: " + user.getUserId() + 
                            "\nOrder: " + foodItem.getName() + " GHC " + foodItem.getPrice() +
                            "\nCafeteria: " + cafeteria.getCafeteriaName() +
                            "\nDropOff location: " + user.getHostel());
+        
+        
+        
+        
+        // System.out.println("\nYou order details are listed below ");
+        // System.out.println("Customer name:" + user.getName() + 
+        //                    "\nUserID: " + user.getUserId() + 
+        //                    "\nOrder: " + foodItem.getName() + " GHC " + foodItem.getPrice() +
+        //                    "\nCafeteria: " + cafeteria.getCafeteriaName() +
+        //                    "\nDropOff location: " + user.getHostel());
     }
     
     public void addItem(FoodItem foodItem) {

@@ -1,8 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-public class Article 
-{
+import javax.swing.JOptionPane;
+
+public class Article {
     
     public static void displayArticle(String choice)
     {
@@ -14,11 +15,11 @@ public class Article
                     Scanner myScanner = new Scanner(myFile1);
                     while (myScanner.hasNextLine()) {
                         String data = myScanner.nextLine();
-                        System.out.println(data);
+                        JOptionPane.showMessageDialog(null, data);
                     }
                     myScanner.close();
                 } catch (FileNotFoundException e) {
-                    System.out.println("An error occurred while reading article1.txt");
+                    JOptionPane.showMessageDialog(null, "An error occurred while reading article1.txt");
                     e.printStackTrace();
                 }
                 break;
@@ -30,11 +31,11 @@ public class Article
                     Scanner myScanner = new Scanner(myFile2);
                     while (myScanner.hasNextLine()) {
                         String data = myScanner.nextLine();
-                        System.out.println(data);
+                        JOptionPane.showMessageDialog(null, data);
                     }
                     myScanner.close();
                 } catch (FileNotFoundException e) {
-                    System.out.println("An error occurred while reading article2.txt");
+                    JOptionPane.showMessageDialog(null, "An error occurred while reading article2.txt");
                     e.printStackTrace();
                 }
                 break;
@@ -46,17 +47,17 @@ public class Article
                     Scanner myScanner = new Scanner(myFile3);
                     while (myScanner.hasNextLine()) {
                         String data = myScanner.nextLine();
-                        System.out.println(data);
+                        JOptionPane.showMessageDialog(null, data);
                     }
                     myScanner.close();
                 } catch (FileNotFoundException e) {
-                    System.out.println("An error occurred while reading GeneralKnowledge.txt");
+                    JOptionPane.showMessageDialog(null, "An error occurred while reading GeneralKnowledge.txt");
                     e.printStackTrace();
                 }
                 break;
         
             default:
-                System.out.println("Invalid choice. Please choose 'Ghana', 'Nigeria', or 'General Knowledge'.");
+                JOptionPane.showMessageDialog(null, "Invalid choice. Please choose 'Ghana', 'Nigeria', or 'General Knowledge'.");
                 break;
         }
         

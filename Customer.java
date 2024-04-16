@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 /**
  * The Customer class represents a customer in a hostel environment.
  * It contains attributes and methods for managing customer information
@@ -38,7 +39,7 @@ public class Customer {
         // Logic to accumulate points from an order
         // For demonstration, let's assume each order gives 10 points
         points += 10;
-        System.out.println("Order " + orderId + " accumulated. Points: " + points);
+        JOptionPane.showMessageDialog(null, "Order " + orderId + " accumulated. Points: " + points);
     }
     public String getName(){
         return name;
@@ -69,7 +70,7 @@ public class Customer {
      */
     public void viewReceipt(int orderId) {
         // Logic to view the receipt of an order
-        System.out.println("Viewing receipt for order " + orderId);
+        JOptionPane.showMessageDialog(null, "Viewing receipt for order " + orderId);
     }
 
     /**
@@ -79,7 +80,7 @@ public class Customer {
      */
     public void editOrder(int orderId) {
         // Logic to edit an order
-        System.out.println("Editing order " + orderId);
+        JOptionPane.showMessageDialog(null, "Editing order " + orderId);
     }
 
     /**
@@ -87,7 +88,7 @@ public class Customer {
      */
     public void orderFood() {
         // Logic to order food
-        System.out.println(name + " is ordering food...");
+        JOptionPane.showMessageDialog(null, name + " is ordering food...");
     }
 
     /**
@@ -97,7 +98,7 @@ public class Customer {
      */
     public void getNotificationUser(String notification) {
         // Logic to notify the user
-        System.out.println("Notification for " + name + ": " + notification);
+        JOptionPane.showMessageDialog(null, "Notification for " + name + ": " + notification);
     }
 
     /**
@@ -105,7 +106,7 @@ public class Customer {
      */
     public void readArticle() {
         // Logic to read an article
-        System.out.println(name + " is reading an article...");
+        JOptionPane.showMessageDialog(null, name + " is reading an article...");
     }
 
     /**
@@ -113,7 +114,7 @@ public class Customer {
      */
     public void takeQuiz() {
         // Logic to take a quiz
-        System.out.println(name + " is taking a quiz...");
+        JOptionPane.showMessageDialog(null, name + " is taking a quiz...");
     }
 
     /**
@@ -122,7 +123,7 @@ public class Customer {
      * @return the number of points accumulated by the user
      */
     public int getPoints() {
-        System.out.println(name + " has " + points + " points.");
+        JOptionPane.showMessageDialog(null, name + " has " + points + " points.");
         return points;
     }
 

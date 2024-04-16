@@ -1,3 +1,4 @@
+import javax.swing.JOptionPane;
 // // /**
 //  * The FoodItem class represents a food item that is served in a cafeteria.
 //  * It contains attributes for the food item's name, description, price, and a reference to the cafeteria.
@@ -68,8 +69,8 @@ public class FoodItem {
      * Displays the details of the food item, including name, description, price, and the cafeteria where it is served.
      */
     public void displayFoodItemDetails() {
-        System.out.println("Food Item Name: " + name);
-        System.out.println("Description: " + description);
-        System.out.println("Price: $" + price);
+        JOptionPane.showMessageDialog(null, "Food Item Name: " + name);
+        JOptionPane.showMessageDialog(null, "Description: " + description);
+        JOptionPane.showMessageDialog(null, "Price: $" + price);
     }
 }

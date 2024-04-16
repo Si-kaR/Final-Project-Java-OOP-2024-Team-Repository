@@ -2,6 +2,8 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
+import javax.swing.JOptionPane;
+
 public class Main{
     public static void main(String[] args){
         // This operation is reserved for the restaurants and school officials 
@@ -11,14 +13,14 @@ public class Main{
 
 
         // Our ordering platform 
-        System.out.println("\n\n---------------------------------------------------------------\nHello there! Welcome to the Ashesi Ordering platform!\n---------------------------------------------------------------");
+        JOptionPane.showMessageDialog(null, "\n\n---------------------------------------------------------------\nHello there! Welcome to the Ashesi Ordering platform!\n---------------------------------------------------------------");
         Scanner keyboard = new Scanner(System.in);
         
         // set up user details
         Customer user1 = createUser();
-        System.out.println("\n---------------------------------------------------------------\nOrder you food now");
+        JOptionPane.showMessageDialog(null, "\n---------------------------------------------------------------\nOrder you food now");
         
-        System.out.println("---------------------------------------------------------------\nSelect restaurants\n1 - " + cafeteria1.getCafeteriaName() + "\n2 - " + cafeteria2.getCafeteriaName());
+        JOptionPane.showMessageDialog(null, "---------------------------------------------------------------\nSelect restaurants\n1 - " + cafeteria1.getCafeteriaName() + "\n2 - " + cafeteria2.getCafeteriaName());
         int option = keyboard.nextInt();
             if (option == 1)
                 makeOrder(user1, cafeteria1);
@@ -56,15 +58,15 @@ public class Main{
             try 
             {
                 Scanner keyboard = new Scanner(System.in);
-                System.out.print("Please enter your details below \nCustomer Name: ");
+                JOptionPane.showMessageDialog(null, "Please enter your details below \nCustomer Name: ");
                 name = keyboard.nextLine();
-                System.out.print("UserID: ");
+                JOptionPane.showMessageDialog(null, "UserID: ");
                 userID = keyboard.nextInt();
-                System.out.print("ContactID: ");
+                JOptionPane.showMessageDialog(null, "ContactID: ");
                 contactID = keyboard.nextInt();
-                System.out.print("Hostel(Type only the first word): ");
+                JOptionPane.showMessageDialog(null, "Hostel(Type only the first word): ");
                 hostel = keyboard.next();
-                System.out.print("Room number: ");
+                JOptionPane.showMessageDialog(null, "Room number: ");
                 roomNo = keyboard.nextInt();
 
                 validInput = true;
@@ -74,7 +76,7 @@ public class Main{
             } 
             catch(InputMismatchException e) 
             {
-                System.out.println("Enter number for Contact ID eg. 4555, word for Hostel eg. Walter, number for room number eg. 12");
+                JOptionPane.showMessageDialog(null, "Enter number for Contact ID eg. 4555, word for Hostel eg. Walter, number for room number eg. 12");
                 
                 
             }
@@ -91,7 +93,7 @@ public class Main{
             {
                 Scanner keyboard = new Scanner(System.in);
                 cafeteria.displayMealsMenu();
-                System.out.println("\nWhat would you like to eat? Please type in number: ");
+                JOptionPane.showMessageDialog(null, "\nWhat would you like to eat? Please type in number: ");
                 int orderno = keyboard.nextInt();
                 validInput = true;
         
@@ -105,7 +107,7 @@ public class Main{
     
             catch (InputMismatchException e) 
             {
-                System.out.println("Please enter a number to select the meal.");
+                JOptionPane.showMessageDialog(null, "Please enter a number to select the meal.");
             }
 
         }
@@ -130,13 +132,13 @@ public class Main{
         int totalPoints = 0;
             for (int i=0; i<questions.length;i++)
             {
-                System.out.println(questions[i]);
-                System.out.print("Please respond with a A or B: ");
+                JOptionPane.showMessageDialog(null, questions[i]);
+                JOptionPane.showMessageDialog(null, "Please respond with a A or B: ");
                 String userResponse = input.next().toUpperCase();
                 //validate the user's input
                 if (!userResponse.equals("A") && !userResponse.equals("B"))
                 {
-                    System.out.println("Invalid response. Please enter either an A or B");
+                    JOptionPane.showMessageDialog(null, "Invalid response. Please enter either an A or B");
                     i--;
                     continue;
                 }
@@ -146,8 +148,8 @@ public class Main{
                 if (answer == answers[i])
                 {
                     totalPoints +=100;
-                } else {System.out.println("The right answer is " + answers[i]);}
-                System.out.println();
+                } else {JOptionPane.showMessageDialog(null, "The right answer is " + answers[i]);}
+                JOptionPane.showMessageDialog(null, );
             
         } return totalPoints;
         
@@ -159,8 +161,8 @@ public class Main{
      */
     public static void initiateGame(Scanner input)
     {
-        System.out.println("Welcome to the Climate change quiz game. Here we test your understanding of the climate by giving you an short article to read after which you answer some few questions based on it.");
-        System.out.print("Do you want to play this game (Enter y(yes) or n(no)): ");
+        JOptionPane.showMessageDialog(null, "Welcome to the Climate change quiz game. Here we test your understanding of the climate by giving you an short article to read after which you answer some few questions based on it.");
+        JOptionPane.showMessageDialog(null, "Do you want to play this game (Enter y(yes) or n(no)): ");
         String userInput = input.nextLine();
         char userResponse = userInput.toLowerCase().charAt(0);
     
@@ -174,8 +176,8 @@ public class Main{
             {
                 countryChoice = getCountry(input);
             }
-            System.out.println("....We would like to test your knowledge on the article you just read");
-            System.out.println("Please press enter to begin the quiz");
+            JOptionPane.showMessageDialog(null, "....We would like to test your knowledge on the article you just read");
+            JOptionPane.showMessageDialog(null, "Please press enter to begin the quiz");
     
             //wait to user to hit enter before beginning the quiz
             input.nextLine();
@@ -184,7 +186,7 @@ public class Main{
 
         else if (userResponse == 'n')
         {
-            System.out.println("..................");
+            JOptionPane.showMessageDialog(null, "..................");
             displayActionPlan();
         }
         
@@ -197,7 +199,7 @@ public class Main{
      */
     public static String getCountry(Scanner input)
     {
-        System.out.print("We have three articles\nEnter Ghana to increase your knowledge on climate change in Ghana\nEnter Nigeria to increase your knowledge on climate change in Nigeria\nEnter General Knowledge to increase your knowledge on the nature of climate in the world.\n");
+        JOptionPane.showMessageDialog(null, "We have three articles\nEnter Ghana to increase your knowledge on climate change in Ghana\nEnter Nigeria to increase your knowledge on climate change in Nigeria\nEnter General Knowledge to increase your knowledge on the nature of climate in the world.\n");
         String countryChoice = input.nextLine();
         return countryChoice;
     }
@@ -213,7 +215,7 @@ public class Main{
         {
             Article.displayArticle(country);
             return true;
-        } else {System.out.println("Invalid Choice. Please enter Ghana, Nigeria, or General Knowledge");
+        } else {JOptionPane.showMessageDialog(null, "Invalid Choice. Please enter Ghana, Nigeria, or General Knowledge");
     return false;}
     }
 
@@ -226,7 +228,7 @@ public class Main{
     {
         if (countryChoice.equalsIgnoreCase("Ghana"))
         {
-            System.out.println();
+            JOptionPane.showMessageDialog(null, );
             QuestionsGhana ghanaQuestions = new QuestionsGhana();
             int result = playGame(ghanaQuestions.getQuestions(), ghanaQuestions.getAnswers(), input);
             displayPointsAccumulated(result);
@@ -236,7 +238,7 @@ public class Main{
 
         else if (countryChoice.equalsIgnoreCase("Nigeria"))
         {
-            System.out.println();
+            JOptionPane.showMessageDialog(null, );
             QuestionsNigeria nigeriaQuestions = new QuestionsNigeria();
             int result = playGame(nigeriaQuestions.getQuestions(), nigeriaQuestions.getAnswers(), input);
             displayPointsAccumulated(result);
@@ -245,7 +247,7 @@ public class Main{
 
         else if (countryChoice.equalsIgnoreCase("General Knowledge"))
         {
-            System.out.println();
+            JOptionPane.showMessageDialog(null, );
             GeneralKnowledge generalKnowledge = new GeneralKnowledge();
             int result = playGame(generalKnowledge.getQuestions(), generalKnowledge.getAnswers(), input);
             displayPointsAccumulated(result);
@@ -259,11 +261,11 @@ public class Main{
     {
         if (result >=400)
         {
-            System.out.println("\n\nCongratulations... Your account has been credited with GHC " + Order.getPrice() * 0.1 + "\n\n");
+            JOptionPane.showMessageDialog(null, "\n\nCongratulations... Your account has been credited with GHC " + Order.getPrice() * 0.1 + "\n\n");
         }
         else 
         {
-            System.out.println("You scored less than 400 points. Play and learn about the climate on your next order");
+            JOptionPane.showMessageDialog(null, "You scored less than 400 points. Play and learn about the climate on your next order");
         }
     }
 
@@ -273,7 +275,7 @@ public class Main{
      */
     public static void displayPointsAccumulated(int result)
     {
-        System.out.println("....................You scored " + result +" / 500 points...................." + "\n");
+        JOptionPane.showMessageDialog(null, "....................You scored " + result +" / 500 points...................." + "\n");
     }
 
     /*This method displays the action Plan for users consumption */
@@ -287,12 +289,12 @@ public class Main{
                while (myScanner.hasNextLine())
                {
                     String data = myScanner.nextLine();
-                    System.out.println(data);
+                    JOptionPane.showMessageDialog(null, data);
                }
                myScanner.close();
             } catch (FileNotFoundException e)
             {
-                System.out.println("An error occured");
+                JOptionPane.showMessageDialog(null, "An error occured");
                 e.printStackTrace();
             }
 

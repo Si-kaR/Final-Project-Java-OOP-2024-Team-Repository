@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 /**
  * The Cafeteria class represents a cafeteria that provides meals and drinks to customers.
@@ -48,7 +49,7 @@ public class Cafeteria {
      /** 
     public void addDrink(String drink) {
         drinksMenu.add(drink);
-        System.out.println("Added drink: " + drink + " to the drinks menu.");
+        JOptionPane.showMessageDialog(null, "Added drink: " + drink + " to the drinks menu.");
     }*/
 
     /**
@@ -60,9 +61,9 @@ public class Cafeteria {
     public boolean removeDrink(String drink) {
         boolean removed = drinksMenu.remove(drink);
         if (removed) {
-            System.out.println("Removed drink: " + drink + " from the drinks menu.");
+            JOptionPane.showMessageDialog(null, "Removed drink: " + drink + " from the drinks menu.");
         } else {
-            System.out.println("Drink: " + drink + " not found in the drinks menu.");
+            JOptionPane.showMessageDialog(null, "Drink: " + drink + " not found in the drinks menu.");
         }
         return removed;
     }
@@ -72,9 +73,9 @@ public class Cafeteria {
      */
     public void displayMealsMenu() {
         int i = 1;
-        System.out.println(cafeteriaName + "'s Meals Menu:");
+        JOptionPane.showMessageDialog(null, cafeteriaName + "'s Meals Menu:");
         for (FoodItem meal : mealsMenu) {
-            System.out.println(i+ ": " + meal.getName() + " GHC " + meal.getPrice());
+            JOptionPane.showMessageDialog(null, i+ ": " + meal.getName() + " GHC " + meal.getPrice());
             i++;
         }
     }
@@ -83,9 +84,9 @@ public class Cafeteria {
      * Displays the drinks menu.
      
     public void displayDrinksMenu() {
-        System.out.println("Drinks Menu:");
+        JOptionPane.showMessageDialog(null, "Drinks Menu:");
         for (String drink : drinksMenu) {
-            System.out.println("- " + drink);
+            JOptionPane.showMessageDialog(null, "- " + drink);
         }
     }
 */
@@ -93,7 +94,7 @@ public class Cafeteria {
      * Displays the full menu (meals and drinks).
      
     public void getMenu() {
-        System.out.println("Full Menu:");
+        JOptionPane.showMessageDialog(null, "Full Menu:");
         displayMealsMenu();
         displayDrinksMenu();
         // Since this is a get method it should RETURN
@@ -137,7 +138,7 @@ public class Cafeteria {
      * @param notification the notification message for the cafeteria
      */
     public void getNotificationCafeteria(String notification) {
-        System.out.println("Notification for " + cafeteriaName + ": " + notification);
+        JOptionPane.showMessageDialog(null, "Notification for " + cafeteriaName + ": " + notification);
     }
 
     // Getters and setters for the attributes
