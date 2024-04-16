@@ -196,33 +196,69 @@ public class Main{
      * @param answers
      * @return
      */
-    public static int playGame(String[] questions, char[] answers, Scanner input)
-    {
-        int totalPoints = 0;
-            for (int i=0; i<questions.length;i++)
-            {
-                JOptionPane.showMessageDialog(null, questions[i]);
-                JOptionPane.showInputDialog(null, "Please respond with a A or B: ");
-                String userResponse = input.next().toUpperCase();
-                //validate the user's input
-                if (!userResponse.equals("A") && !userResponse.equals("B"))
-                {
-                    JOptionPane.showInputDialog(null, "Invalid response. Please enter either an A or B");
-                    i--;
-                    continue;
-                }
+    // public static int playGame(String[] questions, char[] answers, Scanner input)
+    // {
+    //     int totalPoints = 0;
+    //         for (int i=0; i<questions.length;i++)
+    //         {
+    //             JOptionPane.showMessageDialog(null, questions[i]);
+    //             JOptionPane.showInputDialog(null, "Please respond with a A or B: ");
+    //             String userResponse = input.next().toUpperCase();
+    //             //validate the user's input
+    //             if (!userResponse.equals("A") && !userResponse.equals("B"))
+    //             {
+    //                 JOptionPane.showInputDialog(null, "Invalid response. Please enter either an A or B");
+    //                 i--;
+    //                 continue;
+    //             }
                 
-                char answer = userResponse.charAt(0);
+    //             char answer = userResponse.charAt(0);
 
-                if (answer == answers[i])
-                {
-                    totalPoints +=100;
-                } else {JOptionPane.showMessageDialog(null, "The right answer is " + answers[i]);}
-                // JOptionPane.showMessageDialog(null, );
+    //             if (answer == answers[i])
+    //             {
+    //                 totalPoints +=100;
+    //             } else {JOptionPane.showMessageDialog(null, "The right answer is " + answers[i]);}
+    //             // JOptionPane.showMessageDialog(null, );
             
-        } return totalPoints;
+    //     } return totalPoints;
         
+    // }
+    public static int playGame(String[] questions, char[] answers, Scanner input) {
+        int totalPoints = 0;
+        for (int i = 0; i < questions.length; i++) {
+            JOptionPane.showMessageDialog(null, questions[i]);
+            
+            // Prompt the user for a response and validate it
+            String userResponse = JOptionPane.showInputDialog(null, "Please respond with A or B: ");
+            
+            // Handle potential null input
+            if (userResponse == null) {
+                JOptionPane.showMessageDialog(null, "You canceled the quiz.");
+                break;
+            }
+    
+            // Convert the input to uppercase
+            userResponse = userResponse.trim().toUpperCase();
+            
+            // Validate the response
+            if (!userResponse.equals("A") && !userResponse.equals("B")) {
+                JOptionPane.showMessageDialog(null, "Invalid response. Please enter either A or B.");
+                i--; // Re-ask the same question
+                continue;
+            }
+    
+            // Check if the user's response matches the correct answer
+            char answer = userResponse.charAt(0);
+            if (answer == answers[i]) {
+                totalPoints += 100;
+            } else {
+                JOptionPane.showMessageDialog(null, "The correct answer is " + answers[i]);
+            }
+        }
+        return totalPoints;
     }
+    
+    
 
     /**
      * This method initiates the entire game allowing the user an option to play the game or not
@@ -284,7 +320,7 @@ public class Main{
             JOptionPane.showMessageDialog(null, "Press Enter to begin the quiz");
             
             // Wait for the user to press Enter
-            input.nextLine();
+            // input.nextLine();
             
             // Start displaying the questions
             displayQuestions(countryChoice, input);
@@ -312,8 +348,8 @@ public class Main{
      */
     public static String getCountry(Scanner input)
     {
-        JOptionPane.showInputDialog(null, "We have three articles\nEnter Ghana to increase your knowledge on climate change in Ghana\nEnter Nigeria to increase your knowledge on climate change in Nigeria\nEnter General Knowledge to increase your knowledge on the nature of climate in the world.\n");
-        String countryChoice = input.nextLine();
+        String countryChoice = JOptionPane.showInputDialog(null, "We have three articles\nEnter Ghana to increase your knowledge on climate change in Ghana\nEnter Nigeria to increase your knowledge on climate change in Nigeria\nEnter General Knowledge to increase your knowledge on the nature of climate in the world.\n");
+        // String countryChoice = input.nextLine();
         return countryChoice;
     }
     
@@ -343,7 +379,7 @@ public class Main{
             return true;
         } else {
             // Provide instructions for entering a valid country choice
-            JOptionPane.showMessageDialog(null, "Invalid choice. Please enter Ghana, Nigeria, or General Knowledge.");
+            JOptionPane.showInputDialog(null, "Invalid choice. Please enter Ghana, Nigeria, or General Knowledge.");
             return false;
         }
     }
