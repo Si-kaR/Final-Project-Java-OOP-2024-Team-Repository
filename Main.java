@@ -149,7 +149,7 @@ public class Main{
                 {
                     totalPoints +=100;
                 } else {JOptionPane.showMessageDialog(null, "The right answer is " + answers[i]);}
-                JOptionPane.showMessageDialog(null, );
+                // JOptionPane.showMessageDialog(null, );
             
         } return totalPoints;
         
@@ -228,7 +228,7 @@ public class Main{
     {
         if (countryChoice.equalsIgnoreCase("Ghana"))
         {
-            JOptionPane.showMessageDialog(null, );
+            // JOptionPane.showMessageDialog(null, );
             QuestionsGhana ghanaQuestions = new QuestionsGhana();
             int result = playGame(ghanaQuestions.getQuestions(), ghanaQuestions.getAnswers(), input);
             displayPointsAccumulated(result);
@@ -238,7 +238,7 @@ public class Main{
 
         else if (countryChoice.equalsIgnoreCase("Nigeria"))
         {
-            JOptionPane.showMessageDialog(null, );
+            // JOptionPane.showMessageDialog(null, );
             QuestionsNigeria nigeriaQuestions = new QuestionsNigeria();
             int result = playGame(nigeriaQuestions.getQuestions(), nigeriaQuestions.getAnswers(), input);
             displayPointsAccumulated(result);
@@ -247,7 +247,7 @@ public class Main{
 
         else if (countryChoice.equalsIgnoreCase("General Knowledge"))
         {
-            JOptionPane.showMessageDialog(null, );
+            // JOptionPane.showMessageDialog(null, );
             GeneralKnowledge generalKnowledge = new GeneralKnowledge();
             int result = playGame(generalKnowledge.getQuestions(), generalKnowledge.getAnswers(), input);
             displayPointsAccumulated(result);
