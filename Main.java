@@ -13,25 +13,49 @@ public class Main{
 
 
         // Our ordering platform 
-        JOptionPane.showMessageDialog(null, "\n\n---------------------------------------------------------------\nHello there! Welcome to the Ashesi Ordering platform!\n---------------------------------------------------------------");
+        JOptionPane.showMessageDialog(null, "Hello there! \nWelcome to the Ashesi Ordering platform!\n");
         Scanner keyboard = new Scanner(System.in);
         
         // set up user details
         Customer user1 = createUser();
-        JOptionPane.showMessageDialog(null, "Order you food now");
+        JOptionPane.showMessageDialog(null, "Order Food");
         
-        JOptionPane.showMessageDialog(null, "---------------------------------------------------------------\nSelect restaurants\n1 - " + cafeteria1.getCafeteriaName() + "\n2 - " + cafeteria2.getCafeteriaName());
-        int option = keyboard.nextInt();
-            if (option == 1)
-                makeOrder(user1, cafeteria1);
-            else 
-                makeOrder(user1, cafeteria2); 
-        //else if (choice == 2);
-            //learnClimateChange();
-            //takeQuiz();
-        
+        // JOptionPane.showInputDialog(null, "Select restaurants\n1 - " + cafeteria1.getCafeteriaName() + "\n2 - " + cafeteria2.getCafeteriaName());
+        // int option = keyboard.nextInt();
+        //     if (option == 1)
+        //         JOptionPane.showInputDialog(null, cafeteria1);
+        //         makeOrder(user1, cafeteria1);
+        //     else 
+        //     JOptionPane.showInputDialog(null, cafeteria2);
+        //         makeOrder(user1, cafeteria2); 
+        // //else if (choice == 2);
+        //     //learnClimateChange();
+        //     //takeQuiz();
 
-        // display outcome and total points earned if any. 
+        // // display outcome and total points earned if any. 
+
+        // Prompt the user to select a restaurant
+        String optionStr = JOptionPane.showInputDialog(null, "Select restaurants\n1 - " + cafeteria1.getCafeteriaName() + "\n2 - " + cafeteria2.getCafeteriaName());
+
+        // Convert the input to an integer
+        int option = Integer.parseInt(optionStr);
+
+        // Check the user's choice and proceed with the corresponding cafeteria
+        if (option == 1) {
+            // Display cafeteria1 details (optional, adjust as needed)
+            JOptionPane.showMessageDialog(null, "You selected: " + cafeteria1.getCafeteriaName());
+            // Proceed with making an order for cafeteria1
+            makeOrder(user1, cafeteria1);
+        } else if (option == 2) {
+            // Display cafeteria2 details (optional, adjust as needed)
+            JOptionPane.showMessageDialog(null, "You selected: " + cafeteria2.getCafeteriaName());
+            // Proceed with making an order for cafeteria2
+            makeOrder(user1, cafeteria2);
+        } else {
+            // Handle invalid option
+            JOptionPane.showMessageDialog(null, "Invalid option selected. Please select 1 or 2.");
+        }
+
 
     }
     public static Cafeteria createCafeteria(String name, String location){
@@ -58,9 +82,9 @@ public class Main{
             try 
             {
                 Scanner keyboard = new Scanner(System.in);
-                JOptionPane.showInputDialog(null, "Please enter your details below \nCustomer Name: ");
+                name = JOptionPane.showInputDialog(null, "Please enter your details below \nCustomer Name: ");
                 // name = keyboard.nextLine();
-                JOptionPane.showInputDialog(null, "UserID: ");
+                JOptionPane.showInputDialog(null, "Hi "+ name + ", Enter your UserID: ");
                 // userID = keyboard.nextInt();
                 JOptionPane.showInputDialog(null, "ContactID: ");
                 // contactID = keyboard.nextInt();
@@ -76,7 +100,7 @@ public class Main{
             } 
             catch(InputMismatchException e) 
             {
-                JOptionPane.showMessageDialog(null, "Enter number for Contact ID eg. 4555, word for Hostel eg. Walter, number for room number eg. 12");
+                JOptionPane.showInputDialog(null, "Enter number for Contact ID eg. 4555, word for Hostel eg. Walter, number for room number eg. 12");
                 
                 
             }
@@ -85,37 +109,82 @@ public class Main{
                 return customer1;
         
     }
+    // public static void makeOrder(Customer user, Cafeteria cafeteria){
+    //     boolean validInput = false;
+    //     do 
+    //     {
+    //         try
+    //         {
+    //             Scanner keyboard = new Scanner(System.in);
+    //             cafeteria.displayMealsMenu();
+    //             JOptionPane.showInputDialog(null, "\nWhat would you like to eat? Please type in number: ");
+    //             int orderno = keyboard.nextInt();
+    //             validInput = true;
+        
+    //             // Create an order
+    //             Order order = new Order(user, cafeteria,cafeteria.getMealsMenu().get(orderno-1));
+    //             order.displayOrderDetails();
+                
+    //             Scanner input = new Scanner(System.in);
+    //             initiateGame(input);
+    //         } 
+    
+    //         catch (InputMismatchException e) 
+    //         {
+    //             JOptionPane.showInputDialog(null, "Please enter a number to select the meal.");
+    //         }
+
+    //     }
+    //     while (!validInput);
+        
+
+        
+    // }
+
     public static void makeOrder(Customer user, Cafeteria cafeteria){
         boolean validInput = false;
         do 
         {
             try
             {
-                Scanner keyboard = new Scanner(System.in);
-                cafeteria.displayMealsMenu();
-                JOptionPane.showMessageDialog(null, "\nWhat would you like to eat? Please type in number: ");
-                int orderno = keyboard.nextInt();
-                validInput = true;
-        
-                // Create an order
-                Order order = new Order(user, cafeteria,cafeteria.getMealsMenu().get(orderno-1));
-                order.displayOrderDetails();
+                // Display the meals menu in a single dialog box using JOptionPane.showMessageDialog()
+                StringBuilder mealsMenu = new StringBuilder();
+                for (int i = 0; i < cafeteria.getMealsMenu().size(); i++) {
+                    FoodItem foodItem = cafeteria.getMealsMenu().get(i);
+                    mealsMenu.append(i + 1)
+                            .append(" - ")
+                            .append(foodItem.getName())
+                            .append(" (")
+                            .append(foodItem.getPrice())
+                            .append(" GHC)")
+                            .append("\n");
+                }
+                JOptionPane.showMessageDialog(null, "Meals Menu:\n" + mealsMenu.toString());
                 
-                Scanner input = new Scanner(System.in);
-                initiateGame(input);
-            } 
+                // Prompt the user to enter the number of the meal they want to order
+                String input = JOptionPane.showInputDialog(null, "\nWhat would you like to eat? Please type in the number: ");
+                int orderno = Integer.parseInt(input);
+                validInput = true;
     
+                // Create an order based on the user's choice
+                Order order = new Order(user, cafeteria, cafeteria.getMealsMenu().get(orderno - 1));
+                order.displayOrderDetails();
+    
+                // Initiate the game or other operations
+                Scanner scannerInput = new Scanner(System.in);
+                initiateGame(scannerInput);
+            } 
             catch (InputMismatchException e) 
             {
-                JOptionPane.showMessageDialog(null, "Please enter a number to select the meal.");
+                JOptionPane.showMessageDialog(null, "Please enter a valid number to select the meal.");
             }
-
-        }
-        while (!validInput);
-        
-
-        
+            catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Invalid input. Please enter a valid number to select the meal.");
+            }
+    
+        } while (!validInput);
     }
+    
     /*public static void learnClimateChange(){
 
     }*/
@@ -133,12 +202,12 @@ public class Main{
             for (int i=0; i<questions.length;i++)
             {
                 JOptionPane.showMessageDialog(null, questions[i]);
-                JOptionPane.showMessageDialog(null, "Please respond with a A or B: ");
+                JOptionPane.showInputDialog(null, "Please respond with a A or B: ");
                 String userResponse = input.next().toUpperCase();
                 //validate the user's input
                 if (!userResponse.equals("A") && !userResponse.equals("B"))
                 {
-                    JOptionPane.showMessageDialog(null, "Invalid response. Please enter either an A or B");
+                    JOptionPane.showInputDialog(null, "Invalid response. Please enter either an A or B");
                     i--;
                     continue;
                 }
@@ -159,38 +228,82 @@ public class Main{
      * This method initiates the entire game allowing the user an option to play the game or not
      * @param input
      */
-    public static void initiateGame(Scanner input)
-    {
-        JOptionPane.showMessageDialog(null, "Welcome to the Climate change quiz game. Here we test your understanding of the climate by giving you an short article to read after which you answer some few questions based on it.");
-        JOptionPane.showMessageDialog(null, "Do you want to play this game (Enter y(yes) or n(no)): ");
-        String userInput = input.nextLine();
-        char userResponse = userInput.toLowerCase().charAt(0);
+    // public static void initiateGame(Scanner input)
+    // {
+    //     JOptionPane.showMessageDialog(null, "Welcome to the Climate change quiz game. \nHere we test your understanding of the climate by giving you an short article to read after which you answer some few questions based on it.");
+    //     JOptionPane.showInputDialog(null, "\nType y(yes) or n(no)) to proceed: ");
+    //     String userInput = input.nextLine();
+    //     char userResponse = userInput.toLowerCase().charAt(0);
     
-        //If user enters y
-        if (userResponse == 'y')
-        {
-            String countryChoice = getCountry(input);
-            //Display the article based on the user choice
+    //     //If user enters y
+    //     if (userResponse == 'y')
+    //     {
+    //         String countryChoice = getCountry(input);
+    //         //Display the article based on the user choice
 
-            while (checkValidInputCountry(countryChoice) == false) 
-            {
+    //         while (checkValidInputCountry(countryChoice) == false) 
+    //         {
+    //             countryChoice = getCountry(input);
+    //         }
+    //         JOptionPane.showMessageDialog(null, "\n....We would like to test your knowledge on the article you just read");
+    //         JOptionPane.showMessageDialog(null, "Press Enter to begin the quiz");
+    
+    //         //wait to user to hit enter before beginning the quiz
+    //         input.nextLine();
+    //         displayQuestions(countryChoice, input);
+    //     }
+
+    //     else if (userResponse == 'n')
+    //     {
+    //         JOptionPane.showMessageDialog(null, "..................");
+    //         displayActionPlan();
+    //     }
+        
+    // }
+    public static void initiateGame(Scanner input)
+{
+    JOptionPane.showMessageDialog(null, "Welcome to the Climate change quiz game. \nHere we test your understanding of the climate by giving you a short article to read, after which you answer a few questions based on it.");
+    // Prompt the user to enter 'y' or 'n'
+    String userInput = JOptionPane.showInputDialog(null, "\nType y(yes) or n(no) to proceed: ");
+    
+    // Check if the input is not empty
+    if (userInput != null && !userInput.trim().isEmpty()) {
+        // Convert the input to lowercase and get the first character
+        char userResponse = userInput.toLowerCase().charAt(0);
+        
+        // If user enters 'y', proceed with the quiz
+        if (userResponse == 'y') {
+            String countryChoice = getCountry(input);
+            
+            // Keep prompting the user for a valid country choice until they provide one
+            while (!checkValidInputCountry(countryChoice)) {
                 countryChoice = getCountry(input);
             }
-            JOptionPane.showMessageDialog(null, "....We would like to test your knowledge on the article you just read");
-            JOptionPane.showMessageDialog(null, "Please press enter to begin the quiz");
-    
-            //wait to user to hit enter before beginning the quiz
+            
+            JOptionPane.showMessageDialog(null, "\n....We would like to test your knowledge on the article you just read");
+            JOptionPane.showMessageDialog(null, "Press Enter to begin the quiz");
+            
+            // Wait for the user to press Enter
             input.nextLine();
+            
+            // Start displaying the questions
             displayQuestions(countryChoice, input);
-        }
-
-        else if (userResponse == 'n')
-        {
+        } else if (userResponse == 'n') {
+            // If user enters 'n', display the action plan
             JOptionPane.showMessageDialog(null, "..................");
             displayActionPlan();
+        } else {
+            // Handle invalid input
+            JOptionPane.showMessageDialog(null, "Invalid input. Please enter 'y' for yes or 'n' for no.");
+            initiateGame(input); // Retry
         }
-        
+    } else {
+        // Handle empty input
+        JOptionPane.showMessageDialog(null, "Invalid input. Please enter 'y' for yes or 'n' for no.");
+        initiateGame(input); // Retry
     }
+}
+
 
     /**
      * This method gets the choice of country the user would want to learn about
@@ -199,25 +312,42 @@ public class Main{
      */
     public static String getCountry(Scanner input)
     {
-        JOptionPane.showMessageDialog(null, "We have three articles\nEnter Ghana to increase your knowledge on climate change in Ghana\nEnter Nigeria to increase your knowledge on climate change in Nigeria\nEnter General Knowledge to increase your knowledge on the nature of climate in the world.\n");
+        JOptionPane.showInputDialog(null, "We have three articles\nEnter Ghana to increase your knowledge on climate change in Ghana\nEnter Nigeria to increase your knowledge on climate change in Nigeria\nEnter General Knowledge to increase your knowledge on the nature of climate in the world.\n");
         String countryChoice = input.nextLine();
         return countryChoice;
     }
     
+    // /**
+    //  * This method validates the country provided by the user
+    //  * @param country
+    //  * @return
+    //  */
+    // public static boolean checkValidInputCountry(String country)
+    // {
+    //     if (country.equalsIgnoreCase("Ghana") || country.equalsIgnoreCase("Nigeria") || country.equalsIgnoreCase("General Knowledge"))
+    //     {
+    //         Article.displayArticle(country);
+    //         return true;
+    //     } else {JOptionPane.showInputDialog(null, "Invalid Choice. Please enter Ghana, Nigeria, or General Knowledge");
+    // return false;}
+    // }
     /**
      * This method validates the country provided by the user
-     * @param country
-     * @return
+     * @param country The country choice provided by the user
+     * @return true if the country is valid, false otherwise
      */
-    public static boolean checkValidInputCountry(String country)
-    {
-        if (country.equalsIgnoreCase("Ghana") || country.equalsIgnoreCase("Nigeria") || country.equalsIgnoreCase("General Knowledge"))
-        {
+    public static boolean checkValidInputCountry(String country) {
+        if (country.equalsIgnoreCase("Ghana") || country.equalsIgnoreCase("Nigeria") || country.equalsIgnoreCase("General Knowledge")) {
+            // Display the article based on the user's country choice
             Article.displayArticle(country);
             return true;
-        } else {JOptionPane.showMessageDialog(null, "Invalid Choice. Please enter Ghana, Nigeria, or General Knowledge");
-    return false;}
+        } else {
+            // Provide instructions for entering a valid country choice
+            JOptionPane.showMessageDialog(null, "Invalid choice. Please enter Ghana, Nigeria, or General Knowledge.");
+            return false;
+        }
     }
+
 
     /**
      * This method displays the questions and it's associated answers for the user to play the game

@@ -31,7 +31,7 @@ public class Order {
         JOptionPane.showMessageDialog(null, "\nYou order details are listed below ");        
         JOptionPane.showMessageDialog(null, "Hello there! Welcome to the Ashesi Ordering platform!");
 
-        System.out.println("\nYou order details are listed below ");
+        // System.out.println("\nYou order details are listed below ");
         JOptionPane.showMessageDialog(null, "Customer name:" + user.getName() + 
                            "\nUserID: " + user.getUserId() + 
                            "\nOrder: " + foodItem.getName() + " GHC " + foodItem.getPrice() +

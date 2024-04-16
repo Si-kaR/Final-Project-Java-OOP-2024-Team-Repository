@@ -57,7 +57,7 @@ public class Article {
                 break;
         
             default:
-                JOptionPane.showMessageDialog(null, "Invalid choice. Please choose 'Ghana', 'Nigeria', or 'General Knowledge'.");
+                JOptionPane.showInputDialog(null, "Invalid choice. Please choose 'Ghana', 'Nigeria', or 'General Knowledge'.");
                 break;
         }
         
