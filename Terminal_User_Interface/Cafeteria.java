@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  * The Cafeteria class represents a cafeteria that provides meals and drinks to customers.
@@ -10,9 +9,8 @@ public class Cafeteria {
     private String cafeteriaName;
 
     private List<Order> orders; // List of orders in the cafeteria
-    // private List<String> drinksMenu; // List of drinks available in the cafeteria
     private List<FoodItem> mealsMenu; // List of meals available in the cafeteria
-    private String location; // Location of the cafeteria ("onCampus" or "offCampus")
+    private String location;
     private static List<Cafeteria> cafeteriaList = new ArrayList<>(); // List of all cafeterias
 
     /**
@@ -40,96 +38,14 @@ public class Cafeteria {
         mealsMenu.add(meal);
     }
 
-    /**
-     * Adds a drink to the drinks menu.
-     *
-     * @param drink the drink to be added to the drinks menu
-     */
-
-     /** 
-    public void addDrink(String drink) {
-        drinksMenu.add(drink);
-        JOptionPane.showMessageDialog(null, "Added drink: " + drink + " to the drinks menu.");
-    }*/
-
-    /**
-     * Removes a drink from the drinks menu.
-     *
-     * @param drink the drink to be removed from the drinks menu
-     * @return true if the drink was removed; false otherwise
-     
-    public boolean removeDrink(String drink) {
-        boolean removed = drinksMenu.remove(drink);
-        if (removed) {
-            JOptionPane.showMessageDialog(null, "Removed drink: " + drink + " from the drinks menu.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Drink: " + drink + " not found in the drinks menu.");
-        }
-        return removed;
-    }
-*/
-    /**
-     * Displays the meals menu.
-     */
     public void displayMealsMenu() {
         int i = 1;
-        JOptionPane.showMessageDialog(null, cafeteriaName + "'s Meals Menu:");
+        System.out.println(cafeteriaName + "'s Meals Menu:");
         for (FoodItem meal : mealsMenu) {
-            JOptionPane.showMessageDialog(null, i+ ": " + meal.getName() + " GHC " + meal.getPrice());
+            System.out.println(i+ ": " + meal.getName() + " GHC " + meal.getPrice());
             i++;
         }
     }
-
-    /**
-     * Displays the drinks menu.
-     
-    public void displayDrinksMenu() {
-        JOptionPane.showMessageDialog(null, "Drinks Menu:");
-        for (String drink : drinksMenu) {
-            JOptionPane.showMessageDialog(null, "- " + drink);
-        }
-    }
-*/
-    /**
-     * Displays the full menu (meals and drinks).
-     
-    public void getMenu() {
-        JOptionPane.showMessageDialog(null, "Full Menu:");
-        displayMealsMenu();
-        displayDrinksMenu();
-        // Since this is a get method it should RETURN
-        
-    }
-*/
-    //  Use toString for displayMealsMenu
-
-
-    // Use toString for displayDrinksMenu
-
-
-// Prototype
-// Prototype
-// Prototype
-// Prototype
-// Prototype
-// Prototype
-// Prototype
-// Prototype
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     /**
@@ -138,7 +54,7 @@ public class Cafeteria {
      * @param notification the notification message for the cafeteria
      */
     public void getNotificationCafeteria(String notification) {
-        JOptionPane.showMessageDialog(null, "Notification for " + cafeteriaName + ": " + notification);
+        System.out.println("Notification for " + cafeteriaName + ": " + notification);
     }
 
     // Getters and setters for the attributes
@@ -178,25 +94,6 @@ public class Cafeteria {
     public void setOrders(List<Order> orders) {
         this.orders = orders;
     }
-
-    /**
-     * Retrieves the list of drinks available in the cafeteria.
-     *
-     * @return the list of drinks available in the cafeteria
-    
-    public List<String> getDrinksMenu() {
-        return drinksMenu;
-    }
- */
-    /**
-     * Sets the list of drinks available in the cafeteria.
-     *
-     * @param drinksMenu the list of drinks to set
-    
-    public void setDrinksMenu(List<String> drinksMenu) {
-        this.drinksMenu = drinksMenu;
-    }
- */
     /**
      * Retrieves the list of meals available in the cafeteria.
      *
